@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+    <title th:text="${teacher.id} == null ? '교사 등록' : '교사 수정'"></title>
+</head>
+<body>
+    <h1 th:text="${teacher.id} == null ? '교사 등록' : '교사 수정'"></h1>
+    <p>
+        <a href="/">홈으로</a>
+        <a href="/teachers">교사 목록</a>
+    </p>
+    <form th:action="${teacher.id} == null ? @{/teachers/add} : @{/teachers/edit}" th:object="${teacher}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <p><label>이름: <input type="text" th:field="*{name}" required/></label></p>
+        <p>
+            <button type="submit">저장하기</button>
+            <a href="/teachers">취소하기</a>
+        </p>
+    </form>
+</body>
+</html>
