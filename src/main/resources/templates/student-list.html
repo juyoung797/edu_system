@@ -6,35 +6,40 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" th:href="@{/styles.css}">
-    <title>🧑‍🏫 교사 목록</title>
+    <title>👩‍🎓 학생 목록</title>
 </head>
 <body>
-<h1>🧑‍🏫 교사 목록</h1>
+<h1>👩‍🎓 학생 목록</h1>
 <p>
     <a href="/">🏠 홈으로</a>
-    <a href="/teachers/add">➕ 교사 등록</a>
+    <a href="/students/add">➕ 학생 등록</a>
 </p>
 <table>
+    <p style="color:red;" th:if="${error}" th:text="${error}"></p>
     <thead>
     <tr>
         <td>ID</td>
         <td>이름</td>
+        <td>성적</td>
+        <td>교사</td>
         <td>액션</td>
     </tr>
     </thead>
-    <tbody th:each="teacher: ${teachers}">
+    <tbody th:each="student: ${students}">
     <tr>
-        <td th:text="${teacher.id}"></td>
-        <td th:text="${teacher.name}"></td>
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.score}"></td>
+        <td th:text="${student.teacherName} ?: '-'"></td>
         <td>
-            <a th:href="@{'/teachers/edit/' + ${teacher.id}}">수정</a>
-<!--            <a th:href="@{'/teachers/delete/' + ${teacher.id}}">삭제</a>-->
-            <form th:action="@{'/teachers/delete/' + ${teacher.id}}" method="post" style="display:inline;">
+            <a th:href="@{'/students/edit/' + ${student.id}}">수정</a>
+            <form th:action="@{'/students/delete/' + ${student.id}}" method="post" style="display:inline;">
                 <button type="submit">삭제</button>
             </form>
         </td>
     </tr>
     </tbody>
+
 </table>
 </body>
 </html>

@@ -65,6 +65,21 @@ th {
   color: #7D5A50;
 }
 
+/* 인덱스 페이지 기능 리스트 */
+ul {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background-color: #FFF5E4; /* 아주 연한 살구 */
+}
+li {
+  padding: 12px;
+  border: 1px solid #E3C9C1;
+  text-align: center;
+  background-color: #F6E8E1; /* 파스텔 살구 */
+  color: #7D5A50;
+}
+
 /* 폼 */
 form, .form-container {
   max-width: 600px;
